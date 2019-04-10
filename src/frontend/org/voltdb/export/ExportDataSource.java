@@ -1046,6 +1046,9 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                     } catch (Error e) {
                         VoltDB.crashLocalVoltDB("Error polling export buffer", true, e);
                     }
+                    catch (Throwable t) {
+                        exportLog.error("Throwable polling export buffer", t);
+                    }
                 }
             });
         } catch (RejectedExecutionException rej) {
@@ -1108,8 +1111,8 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                     exportLog.debug("Pending a rejected " + cont);
                 }
                 setPendingContainer(cont);
-                polled = true;
             }
+            polled = true;
         } else if (result == ContinuityCheckResult.ACKED) {
             if (exportLog.isDebugEnabled()) {
                 exportLog.debug("Acked pending " + cont);
@@ -1163,7 +1166,6 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
 
     private synchronized void pollImpl(PollTask pollTask) {
 
-        m_pollTask = null;
         if (pollTask == null) {
             return;
         }
@@ -1174,6 +1176,7 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
             // Poll pending container before polling m_committedBuffers
             if (m_pendingContainer.get() != null) {
                 if (pollPendingContainer(pollTask)) {
+                    m_pollTask = null;
                     return;
                 }
             }
@@ -1213,10 +1216,6 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                         assert (result == ContinuityCheckResult.GAP);
                         final AckingContainer ackingContainer = AckingContainer.create(
                                 this, block, m_committedBuffers, pollTask.forcePollSchema());
-                        try {
-                            pollTask.setFuture(null);
-                        } catch (RejectedExecutionException reex) {
-                        }
                         // Put the poll aside until the gap is resolved
                         m_pollTask = pollTask;
                         startMastershipMigration(nextSeqNo, ackingContainer);
@@ -1248,12 +1247,6 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                     exportLog.info("Export queue gap resolved. Resuming export for " + ExportDataSource.this.toString());
                     clearGap(true);
                 }
-                BBContainer schemaContainer = null;
-                if (pollTask.forcePollSchema()) {
-                    schemaContainer = m_committedBuffers.pollSchema();
-                } else {
-                    schemaContainer = first_unpolled_block.getSchemaContainer();
-                }
                 final AckingContainer ackingContainer = AckingContainer.create(
                         this, first_unpolled_block, m_committedBuffers, pollTask.forcePollSchema());
                 if (exportLog.isDebugEnabled()) {
@@ -1270,6 +1263,7 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                     }
                     setPendingContainer(ackingContainer);
                 }
+                m_pollTask = null;
             }
         } catch (Throwable t) {
             try {
