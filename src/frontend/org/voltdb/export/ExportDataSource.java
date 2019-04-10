@@ -1653,8 +1653,8 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
         m_newLeaderHostId = null;
     }
 
-    public ListenableFuture<?> unacceptMastership() {
-        return m_es.submit(new Runnable() {
+    public void unacceptMastership() {
+        m_es.submit(new Runnable() {
 
             @Override
             public void run() {
@@ -1693,9 +1693,12 @@ public class ExportDataSource implements Comparable<ExportDataSource> {
                             m_queryResponses.clear();
                             // ENG-15811 - not sure that the {@code GuestProcessor} is not already
                             // running when we get there.
+                            // FIXME: must remove info messages
                             if (m_pollTask != null) {
+                                exportLog.info("New master satisfies pending poll");
                                 pollImpl(m_pollTask);
                             } else {
+                                exportLog.info("New master satisfies runs decoder");
                                 m_onMastership.run();
                             }
                         }
