@@ -17,7 +17,7 @@
         </filter>
     </appender>
     <!-- console appender displays log messages with priority > INFO. -->
-<!--     <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
+    <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
             value="%p: %m%n"/>
@@ -26,9 +26,9 @@
             <param name="levelMin" value="WARN"/>
             <param name="levelMax" value="FATAL"/>
         </filter>
-    </appender> -->
+    </appender>
     <!-- file appender captures all loggers messages. -->
-<!--     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="file" value="log/volt.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -36,7 +36,7 @@
         </layout>
     </appender>
 
-    <logger name="kafka.consumer.SimpleConsumer" additivity="false">
+<!--     <logger name="kafka.consumer.SimpleConsumer" additivity="false">
         <level value="ERROR"/>
     </logger> -->
 
@@ -45,7 +45,7 @@
     </logger -->
 
     <logger name="HOST">
-        <level value="INFO"/>
+        <level value="TRACE"/>
         <appender-ref ref="console"/>
     </logger>
 
@@ -127,7 +127,7 @@
     </logger> -->
 
     <!-- logger to route specific informational messages to the console. -->
-<!--     <logger name="CONSOLE">
+    <logger name="CONSOLE">
         <level value="INFO"/>
         <appender-ref ref="console"/>
     </logger>
@@ -136,5 +136,5 @@
         <priority value="info" />
         <appender-ref ref="file" />
         <appender-ref ref="consolefiltered" />
-    </root> -->
+    </root>
 </log4j:configuration>
