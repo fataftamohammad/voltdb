@@ -99,6 +99,8 @@ public class FragmentTask extends FragmentTaskBase
         response.m_sourceHSId = m_initiator.getHSId();
         response.setRespBufferable(m_respBufferable);
         m_initiator.deliver(response);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~Sending a response!~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~SP is +"+getSpHandle()+"~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     @Override
