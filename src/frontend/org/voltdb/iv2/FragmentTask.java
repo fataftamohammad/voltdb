@@ -151,6 +151,7 @@ public class FragmentTask extends FragmentTaskBase
             //The fragment is not misrouted and the site may have been marked as non-leader via @MigratePartitionLeader
             //but it should be processed by the same site, act like a leader.
             response.setExecutedOnPreviousLeader(m_fragmentMsg.isExecutedOnPreviousLeader());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRun!~~~~~~~~~~~~~~~~~~~~~~");
             deliverResponse(response);
         } finally {
             if (BatchTimeoutOverrideType.isUserSetTimeout(individualTimeout)) {
@@ -198,7 +199,7 @@ public class FragmentTask extends FragmentTaskBase
             response.addDependency(new DependencyPair.BufferDependencyPair(outputDepId,
                     m_rawDummyResponse, 0, m_rawDummyResponse.length));
         }
-
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRejoin!~~~~~~~~~~~~~~~~~~~~~~");
         deliverResponse(response);
         completeFragment();
     }
