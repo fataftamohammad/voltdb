@@ -115,6 +115,9 @@ public class FragmentTask extends FragmentTaskBase
     @Override
     public void run(SiteProcedureConnection siteConnection)
     {
+        System.out.println(toString());
+
+        
         waitOnDurabilityBackpressureFuture();
         if (hostLog.isDebugEnabled()) {
             hostLog.debug("STARTING: " + this);
