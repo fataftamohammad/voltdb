@@ -425,6 +425,8 @@ public class FragmentTask extends FragmentTaskBase
                 }
             }
         }
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~Processed Fragment!~~~~~~~~~~~~~~~~~~~~~~");
+
         // for multi fragments task, using the aggregated dr Buffer size
         currentFragResponse.setDrBufferSize(drBufferChanged);
         return currentFragResponse;
