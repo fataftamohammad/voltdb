@@ -426,7 +426,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                         break;
                 }
 
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage:Request!!!~~~~~~~~~~~~~~~~~~~~~~"+ isRead.toString());
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage:Request!!!~~~~~~~~~~~~~~~~~~~~~~"+ Boolean.toString(isRead));
 
 
                 /*
