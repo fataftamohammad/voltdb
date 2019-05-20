@@ -246,6 +246,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
 
                 OrderableTransaction ot = m_txnQueue.poll();
                 if (ot != null) {
+                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~inPriorityQueueShit!~~~~~~~~~~~~~~~~~~~~~~");
                     if (m_recoverBeforeTxn != null) {
                         assert(m_recoveryStage == RecoveryStage.RECOVERED);
                         assert(m_recovering == false);
@@ -365,6 +366,10 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                                                message);
             return;
         }
+
+        if (!(message instanceof HeartbeatResponseMessage))
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Not A heartbeat!!!~~~~~~~~~~~~~~~~~~~~~~");
+
         if (message instanceof TransactionInfoBaseMessage) {
             TransactionInfoBaseMessage info = (TransactionInfoBaseMessage)message;
 
