@@ -367,9 +367,6 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
             return;
         }
 
-        if (!(message instanceof HeartbeatResponseMessage))
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Not A heartbeat!!!~~~~~~~~~~~~~~~~~~~~~~");
-
         if (message instanceof TransactionInfoBaseMessage) {
             TransactionInfoBaseMessage info = (TransactionInfoBaseMessage)message;
 
@@ -395,6 +392,9 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                     hrm.getExecHSId(),
                     hrm.getLastReceivedTxnId());
         } else if (message instanceof LocalObjectMessage) {
+
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+
             LocalObjectMessage lom = (LocalObjectMessage)message;
             if (lom.payload instanceof Runnable) {
                 ((Runnable)lom.payload).run();
@@ -472,6 +472,8 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                 }
             }
         } else if (message instanceof AgreementTaskMessage) {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~AgreementTaskMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+
             AgreementTaskMessage atm = (AgreementTaskMessage)message;
             if (!m_transactionsById.containsKey(atm.m_txnId) && atm.m_txnId >= m_minTxnIdAfterRecovery) {
                 m_txnQueue.noteTransactionRecievedAndReturnLastSeen(atm.m_initiatorHSId,
@@ -493,6 +495,9 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                         m_minTxnIdAfterRecovery + " and  dup is " + m_transactionsById.containsKey(atm.m_txnId));
             }
         } else if (message instanceof BinaryPayloadMessage) {
+
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~BinaryPayloadMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+            
             BinaryPayloadMessage bpm = (BinaryPayloadMessage)message;
             ByteBuffer metadata = ByteBuffer.wrap(bpm.m_metadata);
             final byte type = metadata.get();
