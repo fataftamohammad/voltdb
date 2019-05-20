@@ -393,7 +393,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                     hrm.getLastReceivedTxnId());
         } else if (message instanceof LocalObjectMessage) {
 
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
 
             LocalObjectMessage lom = (LocalObjectMessage)message;
             if (lom.payload instanceof Runnable) {
@@ -425,6 +425,9 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                         txnId = m_idManager.getNextUniqueTransactionId();
                         break;
                 }
+
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage:Request!!!~~~~~~~~~~~~~~~~~~~~~~"+ isRead.toString());
+
 
                 /*
                  * Don't send the whole request if this is a read blocked on a write
@@ -497,7 +500,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
         } else if (message instanceof BinaryPayloadMessage) {
 
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~BinaryPayloadMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
-            
+
             BinaryPayloadMessage bpm = (BinaryPayloadMessage)message;
             ByteBuffer metadata = ByteBuffer.wrap(bpm.m_metadata);
             final byte type = metadata.get();
