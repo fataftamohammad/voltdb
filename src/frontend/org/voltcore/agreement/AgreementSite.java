@@ -246,7 +246,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
 
                 OrderableTransaction ot = m_txnQueue.poll();
                 if (ot != null) {
-                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~inPriorityQueueShit!~~~~~~~~~~~~~~~~~~~~~~");
+                    // System.out.println("~~~~~~~~~~~~~~~~~~~~~~inPriorityQueueShit!~~~~~~~~~~~~~~~~~~~~~~");
                     if (m_recoverBeforeTxn != null) {
                         assert(m_recoveryStage == RecoveryStage.RECOVERED);
                         assert(m_recovering == false);
@@ -426,7 +426,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                         break;
                 }
 
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage:Request!!!~~~~~~~~~~~~~~~~~~~~~~"+ Boolean.toString(isRead));
+                // System.out.println("~~~~~~~~~~~~~~~~~~~~~~LocalObjectMessage:Request!!!~~~~~~~~~~~~~~~~~~~~~~"+ Boolean.toString(isRead));
 
 
                 /*
@@ -475,7 +475,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
                 }
             }
         } else if (message instanceof AgreementTaskMessage) {
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~AgreementTaskMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~AgreementTaskMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
 
             AgreementTaskMessage atm = (AgreementTaskMessage)message;
             if (!m_transactionsById.containsKey(atm.m_txnId) && atm.m_txnId >= m_minTxnIdAfterRecovery) {
@@ -499,7 +499,7 @@ public class AgreementSite implements org.apache.zookeeper_voltpatches.server.Zo
             }
         } else if (message instanceof BinaryPayloadMessage) {
 
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~BinaryPayloadMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~BinaryPayloadMessage!!!~~~~~~~~~~~~~~~~~~~~~~");
 
             BinaryPayloadMessage bpm = (BinaryPayloadMessage)message;
             ByteBuffer metadata = ByteBuffer.wrap(bpm.m_metadata);
