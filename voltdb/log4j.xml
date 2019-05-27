@@ -25,7 +25,7 @@
         <!-- <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/> -->
         <filter class="org.apache.log4j.varia.StringMatchFilter">
             <param name="StringToMatch" value="whoami"/>
-            <param name="AcceptOnMatch" value="true"/>
+            <param name="AcceptOnMatch" value="false"/>
             <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
         <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"> -->
