@@ -27,15 +27,15 @@
             <param name="StringToMatch" value="whoami"/>
             <param name="matchReturnValue" value="accept"/> 
             <param name="noMatchReturnValue" value="deny"/> 
-            <!-- <param name="AcceptOnMatch" value="false"/> -->
+            <param name="AcceptOnMatch" value="true"/>
             <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
         <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"> -->
         <!-- </filter> -->
-<!--         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="TRACE"/>
-            <param name="levelMax" value="INFO"/>
-        </filter> -->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="DEBUG"/>
+            <param name="levelMax" value="DEBUG"/>
+        </filter>
     </appender>
     <!-- file appender captures all loggers messages. -->
     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
