@@ -23,7 +23,7 @@
             value="%p: %m%n"/>
         </layout>
         <!-- <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/> -->
-        <filter class="org.apache.logging.log4j.core.filter.RegexFilter">
+        <filter class="org.apache.log4j.core.filter.RegexFilter">
             <param name="regex" value=".*whoami.*"/>
             <param name="onMatch" value="ACCEPT"/>
             <param name="onMismatch" value="DENY"/>
