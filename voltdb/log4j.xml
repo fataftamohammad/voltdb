@@ -57,7 +57,7 @@
 
     <logger name="HOST">
         <level value="TRACE"/>
-        <appender-ref ref="consolefiltered"/>
+        <appender-ref ref="console"/>
     </logger>
 
 <!--     <logger name="NETWORK">
@@ -140,12 +140,12 @@
     <!-- logger to route specific informational messages to the console. -->
     <logger name="CONSOLE">
         <level value="INFO"/>
-        <appender-ref ref="consolefiltered"/>
+        <appender-ref ref="console"/>
     </logger>
 
     <root>
         <priority value="info" />
         <appender-ref ref="file" />
-        <appender-ref ref="consolefiltered" />
+        <appender-ref ref="console" />
     </root>
 </log4j:configuration>
