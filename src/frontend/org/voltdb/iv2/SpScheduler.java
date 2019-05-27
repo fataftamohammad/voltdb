@@ -217,9 +217,9 @@ public class SpScheduler extends Scheduler implements SnapshotCompletionInterest
         m_snapMonitor.addInterest(this);
         VoltDBInterface db = VoltDB.instance();
         if (isLeader && db instanceof RealVoltDB ) {
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~I'm the FUCKING SPI!!!!~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~I'm the FUCKING SPI!!!!~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         SpInitiator init = (SpInitiator)((RealVoltDB)db).getInitiator(m_partitionId);
             if (init.m_term != null) {
                 ((SpTerm)init.m_term).setPromoting(false);
