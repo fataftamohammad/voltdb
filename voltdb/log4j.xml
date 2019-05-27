@@ -22,8 +22,8 @@
             <param name="ConversionPattern"
             value="%p: %m%n"/>
         </layout>
-        <filter class="org.apache.log4j.varia.DenyAllFilter">
-        </filter>
+<!--         <filter class="org.apache.log4j.varia.DenyAllFilter">
+        </filter> -->
         <!-- <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/> -->
         <filter class="org.apache.log4j.varia.StringMatchFilter">
             <param name="StringToMatch" value="whoami"/>
