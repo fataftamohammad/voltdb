@@ -23,10 +23,10 @@
             value="%p: %m%n"/>
         </layout>
         <!-- <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/> -->
-        <filter class="org.apache.log4j.core.filter.RegexFilter">
-            <param name="regex" value=".*whoami.*"/>
-            <param name="onMatch" value="ACCEPT"/>
-            <param name="onMismatch" value="DENY"/>
+        <filter class="org.apache.log4j.varia.StringMatchFilter">
+            <param name="StringToMatch" value="whoami"/>
+            <param name="AcceptOnMatch" value="true"/>
+            <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="TRACE"/>
