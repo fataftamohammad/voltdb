@@ -28,10 +28,12 @@
             <param name="AcceptOnMatch" value="true"/>
             <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+        <filter class="org.apache.log4j.varia.DenyAllFilter">
+        </filter>
+<!--         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="TRACE"/>
             <param name="levelMax" value="INFO"/>
-        </filter>
+        </filter> -->
     </appender>
     <!-- file appender captures all loggers messages. -->
     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
