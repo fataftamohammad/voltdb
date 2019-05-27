@@ -22,9 +22,11 @@
             <param name="ConversionPattern"
             value="%p: %m%n"/>
         </layout>
+        <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/>
+
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="WARN"/>
-            <param name="levelMax" value="FATAL"/>
+            <param name="levelMin" value="TRACE"/>
+            <param name="levelMax" value="INFO"/>
         </filter>
     </appender>
     <!-- file appender captures all loggers messages. -->
@@ -46,7 +48,7 @@
 
     <logger name="HOST">
         <level value="TRACE"/>
-        <appender-ref ref="console"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
 <!--     <logger name="NETWORK">
@@ -129,7 +131,7 @@
     <!-- logger to route specific informational messages to the console. -->
     <logger name="CONSOLE">
         <level value="INFO"/>
-        <appender-ref ref="console"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
     <root>
