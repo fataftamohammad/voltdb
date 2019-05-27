@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <deployment>
-  <cluster kfactor="2"  
-  sitesperhost="3" />
+  <cluster kfactor="1"  
+  sitesperhost="1" />
 </deployment>
 
