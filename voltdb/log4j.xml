@@ -33,8 +33,8 @@
         <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"> -->
         <!-- </filter> -->
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="DEBUG"/>
-            <param name="levelMax" value="DEBUG"/>
+            <param name="levelMin" value="TRACE"/>
+            <param name="levelMax" value="INFO"/>
         </filter>
         <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"/> -->
     </appender>
