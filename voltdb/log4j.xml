@@ -22,21 +22,15 @@
             <param name="ConversionPattern"
             value="%p: %m%n"/>
         </layout>
-<!--         <filter class="org.apache.log4j.varia.DenyAllFilter">
-        </filter> -->
-        <!-- <RegexFilter regex=".*whoami.*" onMatch="ACCEPT" onMismatch="DENY"/> -->
         <filter class="org.apache.log4j.varia.StringMatchFilter">
             <param name="StringToMatch" value="whoami"/>
             <param name="AcceptOnMatch" value="true"/>
-            <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
-        <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"> -->
-        <!-- </filter> -->
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="TRACE"/>
             <param name="levelMax" value="INFO"/>
         </filter>
-        <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"/> -->
+        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
     </appender>
     <!-- file appender captures all loggers messages. -->
     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
@@ -57,7 +51,7 @@
 
     <logger name="HOST">
         <level value="TRACE"/>
-        <appender-ref ref="console"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
 <!--     <logger name="NETWORK">
@@ -140,12 +134,12 @@
     <!-- logger to route specific informational messages to the console. -->
     <logger name="CONSOLE">
         <level value="INFO"/>
-        <appender-ref ref="console"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
     <root>
         <priority value="info" />
         <appender-ref ref="file" />
-        <appender-ref ref="console" />
+        <appender-ref ref="consolefiltered" />
     </root>
 </log4j:configuration>
