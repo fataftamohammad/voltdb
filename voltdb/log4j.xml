@@ -20,7 +20,7 @@
     <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-            value="%n"/>
+            value="%m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.StringMatchFilter">
             <param name="StringToMatch" value="whoami"/>
