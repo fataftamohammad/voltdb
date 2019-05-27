@@ -1,0 +1,7 @@
+CREATE TABLE temp (
+   id INTEGER NOT NULL,
+   name VARCHAR(30),
+   PRIMARY KEY (id)
+ );
+
+PARTITION TABLE temp ON COLUMN id;
