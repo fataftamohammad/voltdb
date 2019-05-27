@@ -29,7 +29,7 @@
             <!-- <param name="onMismatch" value="DENY"/> -->
         </filter>
         <!-- <filter class="org.apache.log4j.varia.DenyAllFilter"> -->
-        </filter>
+        <!-- </filter> -->
 <!--         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="TRACE"/>
             <param name="levelMax" value="INFO"/>
