@@ -112,11 +112,18 @@ public class LeaderElector {
             if(nextNode.equals("node1") || nextNode.equals("node2") || nextNode.equals("node3") || nextNode.equals("node4")
                 || nextNode.equals("node5") || nextNode.equals("node6"))
             {
-                if(node != null && )
+                if(node != null && hostName.equals(nextNode))
+                {
+                    // become the leader
+                    isLeader = true;
+                    if (cb != null) {
+                        cb.becomeLeader();
+                    }
+                }
             }
             else
             {
-                if (node != null && hostName.equals(nextNode)) {
+                if (node != null && node.equals(leader)) {
                     // become the leader
                     isLeader = true;
                     if (cb != null) {
