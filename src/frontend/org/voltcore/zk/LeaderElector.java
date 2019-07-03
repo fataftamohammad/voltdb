@@ -37,6 +37,8 @@ import org.voltcore.utils.CoreUtils;
 
 import com.google_voltpatches.common.collect.ImmutableSet;
 import com.google_voltpatches.common.collect.Sets;
+import java.net.InetAddress;
+
 
 public class LeaderElector {
     // The root is always created as INITIALIZING until the first participant is added,
@@ -83,6 +85,10 @@ public class LeaderElector {
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~electionEventHandler!!!!~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~This node is: !!!!~~~~~~~~~~~~~~~~~~~~~~" + node);
+
+            InetAddress inetAddress = InetAddress.getLocalHost();
+            System.out.println("IP Address:- " + inetAddress.getHostAddress());
+            System.out.println("Host Name:- " + inetAddress.getHostName());
 
 
             //Promote node4!!!!
