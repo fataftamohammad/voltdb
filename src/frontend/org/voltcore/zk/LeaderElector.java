@@ -94,7 +94,7 @@ public class LeaderElector {
                 InetAddress inetAddress = InetAddress.getLocalHost();
                 // System.out.println("IP Address:- " + inetAddress.getHostAddress());
                 hostName = inetAddress.getHostName().split(".")[0];
-                System.out.println("Host Name:- " + inetAddress.getHostName().split('.')[0]);
+                System.out.println("Host Name:- " + inetAddress.getHostName().split(".")[0]);
             }
             catch(Exception ex)
             {
