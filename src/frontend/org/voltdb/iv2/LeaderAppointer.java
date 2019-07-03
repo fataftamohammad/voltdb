@@ -286,9 +286,9 @@ public class LeaderAppointer implements Promotable
         @Override
         public void run(ImmutableMap<Integer, LeaderCallBackInfo> cache) {
             Set<LeaderCallBackInfo> currentLeaders = new HashSet<LeaderCallBackInfo>(cache.values());
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~in m_masterCallback!!!!~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~in m_masterCallback!!!!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             if (m_state.get() == AppointerState.CLUSTER_START) {
                 try {
 

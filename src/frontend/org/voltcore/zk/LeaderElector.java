@@ -79,6 +79,13 @@ public class LeaderElector {
                         "Unexepected failure in LeaderElector.", true, e);
             }
 
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~electionEventHandler!!!!~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~This node is: !!!!~~~~~~~~~~~~~~~~~~~~~~" + node);
+
+
+
             if (node != null && node.equals(leader)) {
                 // become the leader
                 isLeader = true;
