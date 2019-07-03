@@ -23,7 +23,7 @@ source $VOLTDB_BIN/voltenv
 # (once running, all nodes are the same -- no leaders)
 STARTUPLEADERHOST="localhost"
 # list of cluster nodes separated by commas in host:[port] format
-SERVERS="localhost"
+SERVERS="localhost,node2,node3,node4,node5,node6"
 
 # remove build artifacts
 function clean() {
@@ -65,10 +65,10 @@ function init() {
 function client() {
     jars-ifneeded
     java -classpath $APPNAME-client.jar:$APPNAME-procs.jar:$APPCLASSPATH com.MyTPCC \
-        --servers=localhost \
+        --servers=localhost,node2,node3,node4,node5,node6 \
         --duration=180 \
         --warehouses=256 \
-        --scalefactor=22
+        --scalefactor=44
 }
 
 function help() {

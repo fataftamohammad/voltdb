@@ -288,6 +288,10 @@ public class LeaderAppointer implements Promotable
             Set<LeaderCallBackInfo> currentLeaders = new HashSet<LeaderCallBackInfo>(cache.values());
             if (m_state.get() == AppointerState.CLUSTER_START) {
                 try {
+
+                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~in m_masterCallback!!!!~~~~~~~~~~~~~~~~~~~~~~");
+                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     if (currentLeaders.size() == getInitialPartitionCount()) {
                         tmLog.debug(WHOMIM + "Leader appointment complete, promoting MPI and unblocking.");
                         m_state.set(AppointerState.DONE);
@@ -414,6 +418,12 @@ public class LeaderAppointer implements Promotable
     }
 
     private void acceptPromotionImpl(final SettableFuture<Object> blocker) throws InterruptedException, ExecutionException, KeeperException {
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~in acceptPromotionImpl!!!!~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+
         // Crank up the leader caches.  Use blocking startup so that we'll have valid point-in-time caches later.
         m_iv2appointees.start(true);
         m_iv2masters.start(true);
