@@ -106,9 +106,16 @@ public class LeaderElector {
             String nextNode = "";
             if(file.exists())
             {
-                Scanner sc = new Scanner(file); 
-                if (sc.hasNextLine())
-                    nextNode = sc.nextLine();
+                try
+                {
+                    Scanner sc = new Scanner(file); 
+                    if (sc.hasNextLine())
+                        nextNode = sc.nextLine();
+                }
+                catch(Exception ex)
+                {
+                    System.out.println("Exception!!");
+                }
             }
             if(nextNode.equals("node1") || nextNode.equals("node2") || nextNode.equals("node3") || nextNode.equals("node4")
                 || nextNode.equals("node5") || nextNode.equals("node6"))
