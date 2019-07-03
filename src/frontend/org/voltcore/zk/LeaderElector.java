@@ -37,8 +37,9 @@ import org.voltcore.utils.CoreUtils;
 
 import com.google_voltpatches.common.collect.ImmutableSet;
 import com.google_voltpatches.common.collect.Sets;
-import java.net.InetAddress;
 
+import java.net.InetAddress;
+import java.io.*;
 
 public class LeaderElector {
     // The root is always created as INITIALIZING until the first participant is added,
@@ -86,25 +87,51 @@ public class LeaderElector {
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~This node is: !!!!~~~~~~~~~~~~~~~~~~~~~~" + node);
 
+            String hostName = "";
             try
             {
                 InetAddress inetAddress = InetAddress.getLocalHost();
-                System.out.println("IP Address:- " + inetAddress.getHostAddress());
-                System.out.println("Host Name:- " + inetAddress.getHostName());
+                // System.out.println("IP Address:- " + inetAddress.getHostAddress());
+                hostName = netAddress.getHostName().split('.')[0];
+                System.out.println("Host Name:- " + inetAddress.getHostName().split('.')[0]);
             }
             catch(Exception ex)
             {
                 System.out.println("Exception!!");
             }
 
-            //Promote node4!!!!
-            if (node != null && node.charAt(node.length() - 1)=='4' ) {
-                // become the leader
-                isLeader = true;
-                if (cb != null) {
-                    cb.becomeLeader();
+            File file = new File("/proj/sds-PG0/mohammed/pnpdaemon/nextleader.conf");
+
+            String nextNode = "";
+            if(file.exists())
+            {
+                Scanner sc = new Scanner(file); 
+                if (sc.hasNextLine())
+                    nextNode = sc.nextLine();
+            }
+            if(nextNode.equals("node1") || nextNode.equals("node2") || nextNode.equals("node3") || nextNode.equals("node4")
+                || nextNode.equals("node5") || nextNode.equals("node6"))
+            {
+                if(node != null && )
+            }
+            else
+            {
+                if (node != null && hostName.equals(nextNode)) {
+                    // become the leader
+                    isLeader = true;
+                    if (cb != null) {
+                        cb.becomeLeader();
+                    }
                 }
             }
+            //Promote node4!!!!
+            // if (node != null && node.charAt(node.length() - 1)=='4' ) {
+            //     // become the leader
+            //     isLeader = true;
+            //     if (cb != null) {
+            //         cb.becomeLeader();
+            //     }
+            // }
 
 
             // if (node != null && node.equals(leader)) {
