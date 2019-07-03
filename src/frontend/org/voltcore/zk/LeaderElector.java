@@ -86,10 +86,16 @@ public class LeaderElector {
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~This node is: !!!!~~~~~~~~~~~~~~~~~~~~~~" + node);
 
-            InetAddress inetAddress = InetAddress.getLocalHost();
-            System.out.println("IP Address:- " + inetAddress.getHostAddress());
-            System.out.println("Host Name:- " + inetAddress.getHostName());
-
+            try
+            {
+                InetAddress inetAddress = InetAddress.getLocalHost();
+                System.out.println("IP Address:- " + inetAddress.getHostAddress());
+                System.out.println("Host Name:- " + inetAddress.getHostName());
+            }
+            catch(Exception ex)
+            {
+                System.out.println("Exception!!");
+            }
 
             //Promote node4!!!!
             if (node != null && node.charAt(node.length() - 1)=='4' ) {
