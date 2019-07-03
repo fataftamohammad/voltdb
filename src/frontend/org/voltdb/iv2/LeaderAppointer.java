@@ -426,19 +426,19 @@ public class LeaderAppointer implements Promotable
 
         int rollingdice = (int)(Math.random());
 
-        if(rollingdice == 0)
-        {
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Intentially not accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            return;
-        }
-        else
-        {
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        }
+        // if(rollingdice == 0)
+        // {
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~Intentially not accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //     return;
+        // }
+        // else
+        // {
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~Accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
+        //     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        // }
         // Crank up the leader caches.  Use blocking startup so that we'll have valid point-in-time caches later.
         m_iv2appointees.start(true);
         m_iv2masters.start(true);
