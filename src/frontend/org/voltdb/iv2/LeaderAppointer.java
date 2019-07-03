@@ -286,12 +286,13 @@ public class LeaderAppointer implements Promotable
         @Override
         public void run(ImmutableMap<Integer, LeaderCallBackInfo> cache) {
             Set<LeaderCallBackInfo> currentLeaders = new HashSet<LeaderCallBackInfo>(cache.values());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~in m_masterCallback!!!!~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             if (m_state.get() == AppointerState.CLUSTER_START) {
                 try {
 
-                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~in m_masterCallback!!!!~~~~~~~~~~~~~~~~~~~~~~");
-                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
                     if (currentLeaders.size() == getInitialPartitionCount()) {
                         tmLog.debug(WHOMIM + "Leader appointment complete, promoting MPI and unblocking.");
                         m_state.set(AppointerState.DONE);
@@ -423,7 +424,21 @@ public class LeaderAppointer implements Promotable
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~in acceptPromotionImpl!!!!~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        int rollingdice = (int)(Math.random());
 
+        if(rollingdice == 0)
+        {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Intentially not accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            throw new RejectedExecutionException();
+        }
+        else
+        {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~Accepting promotion!!!!~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        }
         // Crank up the leader caches.  Use blocking startup so that we'll have valid point-in-time caches later.
         m_iv2appointees.start(true);
         m_iv2masters.start(true);
