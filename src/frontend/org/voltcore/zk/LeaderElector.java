@@ -100,6 +100,10 @@ public class LeaderElector {
             catch(Exception ex)
             {
                 System.out.println("Exception1!!");
+                ex.printStackTrace(); 
+              
+                    // Prints what exception has been thrown 
+                System.out.println(ex); 
             }
 
             File file = new File("/proj/sds-PG0/mohammed/pnpdaemon/nextleader.conf");
