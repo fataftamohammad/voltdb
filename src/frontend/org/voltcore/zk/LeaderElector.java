@@ -40,6 +40,7 @@ import com.google_voltpatches.common.collect.Sets;
 
 import java.net.InetAddress;
 import java.io.*;
+import java.util.Scanner; 
 
 public class LeaderElector {
     // The root is always created as INITIALIZING until the first participant is added,
@@ -92,7 +93,7 @@ public class LeaderElector {
             {
                 InetAddress inetAddress = InetAddress.getLocalHost();
                 // System.out.println("IP Address:- " + inetAddress.getHostAddress());
-                hostName = netAddress.getHostName().split('.')[0];
+                hostName = inetAddress.getHostName().split(".")[0];
                 System.out.println("Host Name:- " + inetAddress.getHostName().split('.')[0]);
             }
             catch(Exception ex)
