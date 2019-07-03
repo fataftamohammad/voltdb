@@ -93,12 +93,13 @@ public class LeaderElector {
             {
                 InetAddress inetAddress = InetAddress.getLocalHost();
                 // System.out.println("IP Address:- " + inetAddress.getHostAddress());
+                System.out.println("Host Name:- " + inetAddress.getHostName());
                 hostName = inetAddress.getHostName().split(".")[0];
                 System.out.println("Host Name:- " + inetAddress.getHostName().split(".")[0]);
             }
             catch(Exception ex)
             {
-                System.out.println("Exception!!");
+                System.out.println("Exception1!!");
             }
 
             File file = new File("/proj/sds-PG0/mohammed/pnpdaemon/nextleader.conf");
@@ -114,7 +115,7 @@ public class LeaderElector {
                 }
                 catch(Exception ex)
                 {
-                    System.out.println("Exception!!");
+                    System.out.println("Exception2!!");
                 }
             }
             if(nextNode.equals("node1") || nextNode.equals("node2") || nextNode.equals("node3") || nextNode.equals("node4")
