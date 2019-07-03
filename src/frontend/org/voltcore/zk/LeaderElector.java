@@ -86,7 +86,7 @@ public class LeaderElector {
 
 
             //Promote node4!!!!
-            if (node != null && node.charAt(node.length() - 1).equals('4') ) {
+            if (node != null && node.charAt(node.length() - 1)=='4' ) {
                 // become the leader
                 isLeader = true;
                 if (cb != null) {
