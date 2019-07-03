@@ -96,7 +96,7 @@ public class LeaderElector {
                 string hostName = inetAddress.getHostName();
                 System.out.println("Host Name:- " + hostName);
 
-                String temp = hostName.split(".");
+                String[] temp = hostName.split("\\.");
                 System.out.println("shit:- " + temp.lenght());
                 hostName = temp[0];
                 System.out.println("Host Name:- " + hostName);
