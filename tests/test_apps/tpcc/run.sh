@@ -23,7 +23,8 @@ source $VOLTDB_BIN/voltenv
 # (once running, all nodes are the same -- no leaders)
 STARTUPLEADERHOST="node1"
 # list of cluster nodes separated by commas in host:[port] format
-SERVERS="node1,node2,node3,node4,node5,node6"
+# SERVERS="node1,node2,node3,node4,node5,node6"
+SERVERS="node1"
 
 # remove build artifacts
 function clean() {
