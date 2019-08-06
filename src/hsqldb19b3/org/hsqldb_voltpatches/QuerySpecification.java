@@ -2110,8 +2110,8 @@ public class QuerySpecification extends QueryExpression {
      * @param header    A string to be prepended to output
      */
     protected void dumpExprColumns(String header){
-        System.out.println("\n\n*********************************************");
-        System.out.println(header);
+        // System.out.println("\n\n*********************************************");
+        // System.out.println(header);
         try {
             System.out.println(getSQL());
         } catch (Exception e) {
@@ -2129,7 +2129,7 @@ public class QuerySpecification extends QueryExpression {
             System.out.println(i + ": " + exprColumns[i]);
         }
 
-        System.out.println("\n\n");
+        // System.out.println("\n\n");
     }
     /**********************************************************************/
 }

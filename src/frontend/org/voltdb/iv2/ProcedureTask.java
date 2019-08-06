@@ -106,11 +106,11 @@ abstract public class ProcedureTask extends TransactionTask
                                 error));
                 return response;
             }
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~In ProcedureTask!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~In ProcedureTask!~~~~~~~~~~~~~~~~~~~~~~");
             // Check partitioning of single-partition and n-partition transactions.
             if (runner.checkPartition(m_txnState, siteConnection.getCurrentHashinator())) {
                 runner.setupTransaction(m_txnState);
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~Single Partition??!~~~~~~~~~~~~~~~~~~~~~~");
+                // System.out.println("~~~~~~~~~~~~~~~~~~~~~~Single Partition??!~~~~~~~~~~~~~~~~~~~~~~");
 
                 // execute the procedure
                 cr = runner.call(callerParams);

@@ -420,9 +420,9 @@ public class LeaderAppointer implements Promotable
 
     private void acceptPromotionImpl(final SettableFuture<Object> blocker) throws InterruptedException, ExecutionException, KeeperException {
 
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~in acceptPromotionImpl!!!!~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~in acceptPromotionImpl!!!!~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         int rollingdice = (int)(Math.random());
 

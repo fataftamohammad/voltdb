@@ -99,8 +99,8 @@ public class FragmentTask extends FragmentTaskBase
         response.m_sourceHSId = m_initiator.getHSId();
         response.setRespBufferable(m_respBufferable);
         m_initiator.deliver(response);
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~Sending a response!~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~SP is +"+getSpHandle()+"~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~Sending a response!~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~SP is +"+getSpHandle()+"~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     @Override
@@ -115,7 +115,7 @@ public class FragmentTask extends FragmentTaskBase
     @Override
     public void run(SiteProcedureConnection siteConnection)
     {
-        System.out.println(toString());
+        // System.out.println(toString());
 
         
         waitOnDurabilityBackpressureFuture();
@@ -154,7 +154,7 @@ public class FragmentTask extends FragmentTaskBase
             //The fragment is not misrouted and the site may have been marked as non-leader via @MigratePartitionLeader
             //but it should be processed by the same site, act like a leader.
             response.setExecutedOnPreviousLeader(m_fragmentMsg.isExecutedOnPreviousLeader());
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRun!~~~~~~~~~~~~~~~~~~~~~~");
+            // System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRun!~~~~~~~~~~~~~~~~~~~~~~");
             deliverResponse(response);
         } finally {
             if (BatchTimeoutOverrideType.isUserSetTimeout(individualTimeout)) {
@@ -202,7 +202,7 @@ public class FragmentTask extends FragmentTaskBase
             response.addDependency(new DependencyPair.BufferDependencyPair(outputDepId,
                     m_rawDummyResponse, 0, m_rawDummyResponse.length));
         }
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRejoin!~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~inRejoin!~~~~~~~~~~~~~~~~~~~~~~");
         deliverResponse(response);
         completeFragment();
     }
@@ -425,7 +425,7 @@ public class FragmentTask extends FragmentTaskBase
                 }
             }
         }
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~Processed Fragment!~~~~~~~~~~~~~~~~~~~~~~");
+        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~Processed Fragment!~~~~~~~~~~~~~~~~~~~~~~");
 
         // for multi fragments task, using the aggregated dr Buffer size
         currentFragResponse.setDrBufferSize(drBufferChanged);
