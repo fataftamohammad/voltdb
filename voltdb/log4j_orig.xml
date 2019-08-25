@@ -17,28 +17,18 @@
         </filter>
     </appender>
     <!-- console appender displays log messages with priority > INFO. -->
-    <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
+     <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-            value="%m%n"/>
+            value="%p: %m%n"/>
         </layout>
-        <filter class="org.apache.log4j.varia.StringMatchFilter">
-            <param name="StringToMatch" value="whoami"/>
-            <param name="AcceptOnMatch" value="true"/>
-        </filter>
-        <filter class="org.apache.log4j.varia.StringMatchFilter">
-            <param name="StringToMatch" value="Partitions on this host"/>
-            <param name="AcceptOnMatch" value="true"/>
-        </filter>
-        
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="TRACE"/>
-            <param name="levelMax" value="INFO"/>
+            <param name="levelMin" value="WARN"/>
+            <param name="levelMax" value="FATAL"/>
         </filter>
-        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
     </appender>
     <!-- file appender captures all loggers messages. -->
-    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="file" value="log/volt.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -46,17 +36,17 @@
         </layout>
     </appender>
 
-<!--     <logger name="kafka.consumer.SimpleConsumer" additivity="false">
+    <logger name="kafka.consumer.SimpleConsumer" additivity="false">
         <level value="ERROR"/>
-    </logger> -->
+    </logger>
 
     <!-- logger name="AUTH">
         <level value="INFO"/>
     </logger -->
 
     <logger name="HOST">
-        <level value="TRACE"/>
-        <appender-ref ref="consolefiltered"/>
+        <level value="DEBUG"/>
+        <appender-ref ref="console"/>
     </logger>
 
 <!--     <logger name="NETWORK">
@@ -125,21 +115,21 @@
     </logger -->
 
     <!-- Always let CSVLoader and its ilk to write to the console. -->
-<!--     <logger name="CSVLOADER">
+     <logger name="CSVLOADER">
         <level value="INFO"/>
         <appender-ref ref="console"/>
-    </logger> -->
+    </logger>
 
     <!-- Always let the bulk loader and its ilk to write to the console. -->
-<!--     <logger name="LOADER">
+     <logger name="LOADER">
         <level value="INFO"/>
         <appender-ref ref="console"/>
-    </logger> -->
+    </logger>
 
     <!-- logger to route specific informational messages to the console. -->
-    <logger name="CONSOLE">
+     <logger name="CONSOLE">
         <level value="INFO"/>
-        <appender-ref ref="consolefiltered"/>
+        <appender-ref ref="console"/>
     </logger>
 
     <root>
