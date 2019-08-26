@@ -17,10 +17,10 @@ else
     exit -1
 fi
 
-source ~/.bashrc
+# source ~/.bashrc
 # call script to set up paths, including
 # java classpaths and binary paths
-source $VOLTDB_BIN/voltenv
+sudo source $VOLTDB_BIN/voltenv
 
 # leader host for startup purposes only
 # (once running, all nodes are the same -- no leaders)
