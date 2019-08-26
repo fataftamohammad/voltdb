@@ -69,7 +69,7 @@ function client() {
         --servers=$SERVERS \
         --duration=180 \
         --warehouses=256 \
-        --scalefactor=44
+        --scalefactor=200
 }
 
 function help() {
