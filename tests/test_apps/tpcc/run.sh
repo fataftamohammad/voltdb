@@ -6,6 +6,8 @@ APPNAME="tpcc"
 if [ -e ../../../bin/voltdb ]; then
     # assume this is the examples folder for a kit
     VOLTDB_BIN="$(dirname $(dirname $(dirname $(pwd))))/bin"
+elif [ -e /proj/sds-PG0/mohammed/voltdb/bin/voltdb ]; then
+    VOLTDB_BIN="/proj/sds-PG0/mohammed/voltdb/bin/"
 elif [ -n "$(which voltdb 2> /dev/null)" ]; then
     # assume we're using voltdb from the path
     VOLTDB_BIN=$(dirname "$(which voltdb)")
