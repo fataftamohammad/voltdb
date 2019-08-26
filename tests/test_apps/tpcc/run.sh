@@ -68,7 +68,7 @@ function client() {
     java -classpath $APPNAME-client.jar:$APPNAME-procs.jar:$APPCLASSPATH com.MyTPCC \
         --servers=$SERVERS \
         --duration=180 \
-        --warehouses=10000 \
+        --warehouses=2000 \
         --scalefactor=44
 }
 
