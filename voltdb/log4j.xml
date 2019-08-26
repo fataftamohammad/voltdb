@@ -45,8 +45,8 @@
     </logger -->
 
     <logger name="HOST">
-        <level value="ERROR"/>
-        <appender-ref ref="console"/>
+        <level value="WARN"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
 <!--     <logger name="NETWORK">
@@ -116,25 +116,25 @@
 
     <!-- Always let CSVLoader and its ilk to write to the console. -->
      <logger name="CSVLOADER">
-        <level value="ERROR"/>
-        <appender-ref ref="console"/>
+        <level value="WARN"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
     <!-- Always let the bulk loader and its ilk to write to the console. -->
      <logger name="LOADER">
-        <level value="ERROR"/>
-        <appender-ref ref="console"/>
+        <level value="WARN"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
     <!-- logger to route specific informational messages to the console. -->
      <logger name="CONSOLE">
-        <level value="ERROR"/>
-        <appender-ref ref="console"/>
+        <level value="WARN"/>
+        <appender-ref ref="consolefiltered"/>
     </logger>
 
     <root>
-        <priority value="ERROR" />
+        <priority value="WARN" />
         <!-- <appender-ref ref="file" /> -->
-        <appender-ref ref="console" />
+        <appender-ref ref="consolefiltered" />
     </root>
 </log4j:configuration>
