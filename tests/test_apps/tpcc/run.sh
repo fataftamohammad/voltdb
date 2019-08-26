@@ -67,9 +67,9 @@ function client() {
     jars-ifneeded
     java -classpath $APPNAME-client.jar:$APPNAME-procs.jar:$APPCLASSPATH com.MyTPCC \
         --servers=$SERVERS \
-        --duration=120 \
-        --warehouses=256 \
-        --scalefactor=1000
+        --duration=180 \
+        --warehouses=1000 \
+        --scalefactor=44
 }
 
 function help() {
