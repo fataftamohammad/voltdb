@@ -17,6 +17,7 @@ else
     exit -1
 fi
 
+source ~/.bashrc
 # call script to set up paths, including
 # java classpaths and binary paths
 source $VOLTDB_BIN/voltenv
