@@ -6,7 +6,7 @@
       Appender console and appender consolefiltered must have non-intersecting
       level filters or messages will appear on the console once for each
       overlapping appender. -->
-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+<!--     <appender name="console" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
             value="%m%n"/>
@@ -15,9 +15,9 @@
             <param name="levelMin" value="TRACE"/>
             <param name="levelMax" value="INFO"/>
         </filter>
-    </appender>
+    </appender> -->
     <!-- console appender displays log messages with priority > INFO. -->
-    <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
+<!--     <appender name="consolefiltered" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
             value="%m%n"/>
@@ -36,15 +36,15 @@
             <param name="levelMax" value="INFO"/>
         </filter>
         <filter class="org.apache.log4j.varia.DenyAllFilter"/>
-    </appender>
+    </appender> -->
     <!-- file appender captures all loggers messages. -->
-    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+<!--     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="file" value="log/volt.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d   %-5p [%t] %c: %m%n"/>
         </layout>
-    </appender>
+    </appender> -->
 
 <!--     <logger name="kafka.consumer.SimpleConsumer" additivity="false">
         <level value="ERROR"/>
@@ -54,10 +54,10 @@
         <level value="INFO"/>
     </logger -->
 
-    <logger name="HOST">
+<!--     <logger name="HOST">
         <level value="TRACE"/>
         <appender-ref ref="consolefiltered"/>
-    </logger>
+    </logger> -->
 
 <!--     <logger name="NETWORK">
         <level value="DEBUG"/>
@@ -137,7 +137,7 @@
     </logger> -->
 
     <!-- logger to route specific informational messages to the console. -->
-    <logger name="CONSOLE">
+<!--     <logger name="CONSOLE">
         <level value="INFO"/>
         <appender-ref ref="consolefiltered"/>
     </logger>
@@ -146,5 +146,5 @@
         <priority value="info" />
         <appender-ref ref="file" />
         <appender-ref ref="consolefiltered" />
-    </root>
+    </root> -->
 </log4j:configuration>
