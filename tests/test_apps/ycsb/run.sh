@@ -27,10 +27,11 @@ echo $VOLTDB_LIB
 echo $VOLTDB_VOLTDB
 
 # make sure YCSB_HOME is set
-: ${YCSB_HOME:?"You must set the YCSB_HOME environment variable in order to continue"}
-if [ ! -d "$YCSB_HOME" ]; then
-    echo "Directory $YCSB_HOME does not exist"; exit;
-fi
+YCSB_HOME="/proj/sds-PG0/mohammed/voltdb/tests/test_apps/ycsb/ycsb-0.15.0"
+# : ${YCSB_HOME:?"You must set the YCSB_HOME environment variable in order to continue"}
+# if [ ! -d "$YCSB_HOME" ]; then
+#     echo "Directory $YCSB_HOME does not exist"; exit;
+# fi
 CLASSPATH=$({ \
     \ls -1 "$VOLTDB_VOLTDB"/voltdb-*.jar; \
     \ls -1 "$VOLTDB_LIB"/*.jar; \
