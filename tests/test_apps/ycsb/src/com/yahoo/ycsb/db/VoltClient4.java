@@ -38,6 +38,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.Vector;
 import java.util.concurrent.CyclicBarrier;
+import java.util.Map;
 
 import org.voltdb.VoltTable;
 import org.voltdb.VoltType;
@@ -105,14 +106,15 @@ public class VoltClient4 extends DB {
         }
     }
 
+
     @Override
-    public Status insert(String keyspace, String key, HashMap<String, ByteIterator> columns)
+    public Status insert(String keyspace, String key, Map<String, ByteIterator> columns)
     {
         return update(keyspace, key, columns);
     }
 
     @Override
-    public Status read(String keyspace, String key, Set<String> columns, HashMap<String, ByteIterator> result)
+    public Status read(String keyspace, String key, Set<String> columns, Map<String, ByteIterator> result)
     {
         try
         {
@@ -124,7 +126,9 @@ public class VoltClient4 extends DB {
             VoltTable table = response.getResults()[0];
             if (table.advanceRow())
             {
-                unpackRowData(table, columns, result);
+                HashMap<String, ByteIterator> temp_result = new HashMap<String, ByteIterator>(result);
+
+                unpackRowData(table, columns, temp_result);
             }
             return Status.OK;
         }
@@ -190,11 +194,12 @@ public class VoltClient4 extends DB {
     }
 
     @Override
-    public Status update(String keyspace, String key, HashMap<String, ByteIterator> columns)
+    public Status update(String keyspace, String key, Map<String, ByteIterator> columns)
     {
         try
         {
-            ClientResponse response = m_client.callProcedure("Put", keyspace.getBytes(UTF8), key, packRowData(columns));
+            HashMap<String, ByteIterator> temp_columns = new HashMap<String, ByteIterator>(columns);
+            ClientResponse response = m_client.callProcedure("Put", keyspace.getBytes(UTF8), key, packRowData(temp_columns));
             return response.getStatus() == ClientResponse.SUCCESS ? Status.OK : Status.ERROR;
         }
         catch (Exception e)

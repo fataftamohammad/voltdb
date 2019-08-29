@@ -23,6 +23,9 @@ else
     VOLTDB_LIB="`pwd`/../../../lib"
     VOLTDB_VOLTDB="`pwd`/../../../voltdb"
 fi
+echo $VOLTDB_LIB
+echo $VOLTDB_VOLTDB
+
 # make sure YCSB_HOME is set
 : ${YCSB_HOME:?"You must set the YCSB_HOME environment variable in order to continue"}
 if [ ! -d "$YCSB_HOME" ]; then
