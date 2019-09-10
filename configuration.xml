@@ -4,3 +4,6 @@
   sitesperhost="16" />
 </deployment>
 
+<systemsettings>
+   <temptables maxsize="500"/>
+</systemsettings>
