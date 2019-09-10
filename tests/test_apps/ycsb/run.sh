@@ -42,7 +42,7 @@ VOLTDB="$VOLTDB_BIN/voltdb"
 VOLTCOMPILER="$VOLTDB_BIN/voltcompiler"
 LOG4J="$VOLTDB_VOLTDB/log4j.xml"
 LICENSE="$VOLTDB_VOLTDB/license.xml"
-SERVERS="node1,node2,node3,node4,node5,node6"
+SERVERS="node2,node3"
 
 # remove build artifacts
 function clean() {
