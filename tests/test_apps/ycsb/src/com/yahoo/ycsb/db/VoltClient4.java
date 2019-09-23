@@ -116,18 +116,30 @@ public class VoltClient4 extends DB {
     @Override
     public void cleanup() throws DBException
     {
-        long endTime = System.nanoTime();
-        long runtime = endTime - startTime;
-        System.out.println("Exiting client - Writing latencies ");
-        ListIterator it = latencies.listIterator();
-        while(it.hasNext())
-            writer.append(it.next().toString() + "\n");
-        
-        writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
-        writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
-        writer.close();
+        try
+        {
+            long endTime = System.nanoTime();
+            long runtime = endTime - startTime;
+            System.out.println("Exiting client - Writing latencies ");
+            ListIterator it = latencies.listIterator();
+            while(it.hasNext())
+                writer.append(it.next().toString() + "\n");
+            
+            writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
+            writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
+            
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            throw new DBException(e.getMessage());
+        }
+        finally
+        {
+            writer.close();
+            ConnectionHelper.disconnect(Thread.currentThread().getId());
 
-        ConnectionHelper.disconnect(Thread.currentThread().getId());
+        }
     }
 
     @Override
