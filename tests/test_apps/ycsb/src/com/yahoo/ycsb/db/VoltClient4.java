@@ -96,11 +96,11 @@ public class VoltClient4 extends DB {
         System.out.println("Latencies output file is: "+ filePath);
 
         latencies = new LinkedList<Long>(); 
-        writer = new BufferedWriter(new FileWriter(filePath,true));
 
         int ratelimit = strLimit != null ? Integer.parseInt(strLimit) : Integer.MAX_VALUE;
         try
         {
+            writer = new BufferedWriter(new FileWriter(filePath,true));
             m_client = ConnectionHelper.createConnection(Thread.currentThread().getId(), servers, user, password, ratelimit);
         }
         catch (Exception e)
