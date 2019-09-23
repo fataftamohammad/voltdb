@@ -60,6 +60,7 @@ public class VoltClient4 extends DB {
     private String[] m_partitionkeys;
     private byte[] m_workingData;
     private ByteBuffer m_writeBuf;
+    private String filePath = "";
 
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -71,6 +72,15 @@ public class VoltClient4 extends DB {
         String user = props.getProperty("voltdb.user", "");
         String password = props.getProperty("voltdb.password", "");
         String strLimit = props.getProperty("voltdb.ratelimit");
+        // String folderPath = props.getProperty("outputfolder");
+        // if(folderPath == null)
+        // {
+        //     System.out.println("No output folder is provided!!! exiting.");
+        //     System.exit(1);
+        // }
+        // filePath = folderPath + Thread.currentThread().getId().toString();
+        // System.out.println("Latencies output file is: "+ filePath);
+
         int ratelimit = strLimit != null ? Integer.parseInt(strLimit) : Integer.MAX_VALUE;
         try
         {
