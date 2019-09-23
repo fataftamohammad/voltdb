@@ -77,7 +77,7 @@ public class VoltClient4 extends DB {
     private BufferedWriter writer;
     private long opCount = 0;
     private static final Charset UTF8 = Charset.forName("UTF-8");
-
+    private long startTime;
     @Override
     public void init() throws DBException
     {
@@ -110,11 +110,14 @@ public class VoltClient4 extends DB {
         }
         m_workingData = new byte[1024 * 1024];
         m_writeBuf = ByteBuffer.wrap(m_workingData);
+        startTime = System.nanoTime();  
     }
 
     @Override
     public void cleanup() throws DBException
     {
+        long endTime = System.nanoTime();
+        long runtime = endTime - startTime;
         System.out.println("Exiting client - Writing latencies ");
         ListIterator it = latencies.listIterator();
         while(it.hasNext())
@@ -123,7 +126,7 @@ public class VoltClient4 extends DB {
         writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
         writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
         writer.close();
-        
+
         ConnectionHelper.disconnect(Thread.currentThread().getId());
     }
 
