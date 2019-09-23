@@ -120,13 +120,14 @@ public class VoltClient4 extends DB {
         {
             long endTime = System.nanoTime();
             long runtime = endTime - startTime;
+            double runtime_d = runtime/1_000_000_000.0;
             System.out.println("Exiting client - Writing latencies ");
             ListIterator it = latencies.listIterator();
             while(it.hasNext())
                 writer.append(it.next().toString() + "\n");
             
-            writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
-            writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
+            writer.append("[RUNTIME] = " + Double.toString(runtime_d) + " Seconds\n");
+            writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / runtime_d) + "\n");
             writer.close();
             
         }
