@@ -66,6 +66,9 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.Random;
+
+
 
 public class VoltClient4 extends DB {
     private Client m_client;
@@ -81,6 +84,7 @@ public class VoltClient4 extends DB {
     @Override
     public void init() throws DBException
     {
+        Random rand = new Random(); 
         Properties props = getProperties();
         String servers = props.getProperty("voltdb.servers", "localhost");
         String user = props.getProperty("voltdb.user", "");
@@ -92,8 +96,9 @@ public class VoltClient4 extends DB {
             System.out.println("No output folder is provided!!! exiting.");
             System.exit(1);
         }
+        folderPath += rand.nextInt(1_000_000) + "_";
         filePath = folderPath + Long.toString(Thread.currentThread().getId());
-        System.out.println("Latencies output file is: "+ filePath);
+        System.out.println("Latencies output file is: " + filePath);
 
         latencies = new LinkedList<Long>(); 
 
