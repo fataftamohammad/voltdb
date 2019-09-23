@@ -84,7 +84,7 @@ function workload() {
     if [ ! -f $CLIENTNAME.jar ]; then jars; fi
     # run the YCSB workload, which must exist at $YCSB_HOME/workloads
     java -cp "$CLASSPATH:$CLIENTNAME.jar" com.yahoo.ycsb.Client -t -s -db com.yahoo.ycsb.db.VoltClient4 \
-        -P $YCSB_HOME/workloads/$WORKLOAD -P workload.properties -P base.properties
+        -P $YCSB_HOME/workloads/$WORKLOAD -P workload.properties -P base.properties -P nifty.properties
 }
 
 function load() {
