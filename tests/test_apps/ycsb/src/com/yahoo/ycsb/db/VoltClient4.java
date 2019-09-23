@@ -55,13 +55,27 @@ import com.yahoo.ycsb.DB;
 import com.yahoo.ycsb.DBException;
 import com.yahoo.ycsb.Status;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.nio.ByteBuffer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class VoltClient4 extends DB {
     private Client m_client;
     private String[] m_partitionkeys;
     private byte[] m_workingData;
     private ByteBuffer m_writeBuf;
     private String filePath = "";
-
+    private LinkedList<Long> latencies; 
+    private BufferedWriter writer;
+    private long opCount = 0;
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     @Override
@@ -81,6 +95,9 @@ public class VoltClient4 extends DB {
         filePath = folderPath + Long.toString(Thread.currentThread().getId());
         System.out.println("Latencies output file is: "+ filePath);
 
+        latencies = new LinkedList<Long>(); 
+        writer = new BufferedWriter(new FileWriter(filePath,true));
+
         int ratelimit = strLimit != null ? Integer.parseInt(strLimit) : Integer.MAX_VALUE;
         try
         {
@@ -98,6 +115,7 @@ public class VoltClient4 extends DB {
     @Override
     public void cleanup() throws DBException
     {
+        System.out.println("Exiting client!!!!! ((can freaking save latencies here?!");
         ConnectionHelper.disconnect(Thread.currentThread().getId());
     }
 
@@ -133,6 +151,8 @@ public class VoltClient4 extends DB {
             {
                 return Status.ERROR;
             }
+            latencies.add((long)response.getClientRoundtripNanos()/1000);
+            opCount++;
             VoltTable table = response.getResults()[0];
             if (table.advanceRow())
             {
