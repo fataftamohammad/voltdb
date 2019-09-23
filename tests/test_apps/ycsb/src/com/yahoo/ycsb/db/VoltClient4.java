@@ -127,6 +127,7 @@ public class VoltClient4 extends DB {
             
             writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
             writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
+            writer.close();
             
         }
         catch (Exception e)
@@ -136,9 +137,7 @@ public class VoltClient4 extends DB {
         }
         finally
         {
-            writer.close();
             ConnectionHelper.disconnect(Thread.currentThread().getId());
-
         }
     }
 
