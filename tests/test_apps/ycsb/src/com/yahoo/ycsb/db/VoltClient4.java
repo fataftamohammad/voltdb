@@ -115,7 +115,15 @@ public class VoltClient4 extends DB {
     @Override
     public void cleanup() throws DBException
     {
-        System.out.println("Exiting client!!!!! ((can freaking save latencies here?!");
+        System.out.println("Exiting client - Writing latencies ");
+        ListIterator it = latencies.listIterator();
+        while(it.hasNext())
+            writer.append(it.next().toString() + "\n");
+        
+        writer.append("[RUNTIME] = " + Double.toString(TimeUnit.NANOSECONDS.toSeconds(runtime)) + " Seconds\n");
+        writer.append("[Throughput] = " + Double.toString(opCount * 1.0 / TimeUnit.NANOSECONDS.toSeconds(runtime)) + "\n");
+        writer.close();
+        
         ConnectionHelper.disconnect(Thread.currentThread().getId());
     }
 
