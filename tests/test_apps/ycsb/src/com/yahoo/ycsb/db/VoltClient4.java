@@ -78,7 +78,7 @@ public class VoltClient4 extends DB {
             System.out.println("No output folder is provided!!! exiting.");
             System.exit(1);
         }
-        filePath = folderPath + Thread.currentThread().getId().toString();
+        filePath = folderPath + Long.toString(Thread.currentThread().getId());
         System.out.println("Latencies output file is: "+ filePath);
 
         int ratelimit = strLimit != null ? Integer.parseInt(strLimit) : Integer.MAX_VALUE;
